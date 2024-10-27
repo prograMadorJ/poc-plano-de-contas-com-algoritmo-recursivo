@@ -38,7 +38,8 @@
     {
       "classificacao": "1.1.1",
       "descricao": "RECEITA OPERACIONAL",
-      "classificacao_pai": "1.1",
+      "classificacao_pai": null,
+      "orfao": 0,
       "janeiro": -326,
       "fevereiro": -652,
       "marco": -978,
@@ -3289,6 +3290,7 @@
       "classificacao": "2.3.19.0038",
       "descricao": "HONORARIOS ADVOCATICIOS",
       "classificacao_pai": "2.3.19",
+      "orfao": true,
       "janeiro": 185,
       "fevereiro": 370,
       "marco": 555,

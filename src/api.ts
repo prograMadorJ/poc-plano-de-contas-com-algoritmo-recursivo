@@ -19,13 +19,21 @@ export const getData = async () => {
    *
    * use o comando abaixo para evitar separar os itens, e criar um pai
    * para agrupar os itens orfãos
+   * 
+   * os itens da estrutura dataSource, a qual deja criar um pai, NÃO deve conter
+   * um campo "orfao": true ou "orfao": 1, pode conter "orfao": false, "orfao": 0 
+   * ou pode conter o campo "classificacao_pai": null
    *
-   * normalize(dataSource, [], null, false, []);
+   * COMANDO:  dataSource = normalize(dataSource, [], null, false, []);
    *
    * Para deixar os itens ofãos externos como itens de cabeçalho
    * use o comando abaixo
+   * 
+   * o item da estrutura dataSource, a qual deja destacar, deve conter
+   * um campo "orfao": true ou "orfao": 1 
    *
-   * normalize(dataSource, [], null, true, []);
+   * COMANDO:  dataSource = normalize(dataSource, [], null, true, []);
+   * 
    *
    */
   dataSource = normalize(dataSource, [], null, false, []);
@@ -72,9 +80,14 @@ function normalize(
           next.orfao = true;
           orfans.push(next);
         } else {
-          const newParent = makeItem(classificacao, null, next.descricao);
+          let findedNewParent = normalizedData.find(s => s.classificacao == classificacao)
+          const newParent = findedNewParent ?? makeItem(classificacao, null, next.descricao);
           next.classificacao_pai = newParent.classificacao;
-          data.splice(0, 0, newParent);
+
+          if (!findedNewParent) {
+              data.splice(0, 0, newParent);
+          }
+        
         }
       }
     } else if (parent && !next.orfao) {
