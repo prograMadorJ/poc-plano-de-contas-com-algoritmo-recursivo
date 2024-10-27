@@ -51,6 +51,7 @@ function normalize(
   next: {
     classificacao: string;
     classificacao_pai: any;
+    descricao: any;
     orfao: boolean;
     key: any;
   } | null,
