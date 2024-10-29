@@ -3290,7 +3290,7 @@
       "classificacao": "2.3.19.0038",
       "descricao": "HONORARIOS ADVOCATICIOS",
       "classificacao_pai": "2.3.19",
-      "orfao": true,
+      "orfao": false,
       "janeiro": 185,
       "fevereiro": 370,
       "marco": 555,
